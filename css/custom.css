@@ -1,6 +1,4 @@
 /* 全局背景 */
 body {
-    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg) no-repeat center center fixed;
-    background-size: cover;
-    z-index: 0;
+    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg);
 }
