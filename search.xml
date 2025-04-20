@@ -35,7 +35,7 @@
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[/* 全局背景 */body {    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg) no-repeat center center fixed !important;    background-size: cover !important;    z-index: 0 !important;}]]></content>
+        <content type="html"><![CDATA[/* 全局背景 */body {    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg) no-repeat center center fixed;    background-size: cover;    z-index: 0;}]]></content>
       
     </entry>
     
