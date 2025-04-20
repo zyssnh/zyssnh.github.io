@@ -1,0 +1,15 @@
+/* 全局背景图 */
+#web_bg {
+    background: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg) center/cover fixed no-repeat !important;
+    background-blend-mode: multiply;
+}
+
+/* 透明化容器背景 */
+#recent-posts, .card-widget, .layout_post>#post {
+    background: transparent !important;
+}
+
+/* 处理页脚背景 */
+#footer {
+    background: transparent !important;
+}
