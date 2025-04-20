@@ -20,9 +20,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>Categories</title>
+      <link href="/Categories/index.html"/>
+      <url>/Categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -31,11 +31,11 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* 全局背景 */body {    background: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg) !important;}]]></content>
       
     </entry>
     
@@ -53,9 +53,20 @@
     
     
     <entry>
-      <title>Categories</title>
-      <link href="/Categories/index.html"/>
-      <url>/Categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
