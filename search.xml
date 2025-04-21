@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>偏导数</title>
+      <link href="/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
+      <url>/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+          <category> 数学分析 </category>
+          
+          <category> 微积分 </category>
+          
+          <category> 微分学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 极限 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python</title>
+      <link href="/2025/04/21/Learn/Code/Python/"/>
+      <url>/2025/04/21/Learn/Code/Python/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机科学 </category>
+          
+          <category> 程序开发 </category>
+          
+          <category> 编程语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程语言 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2025/04/20/hello-world/"/>
       <url>/2025/04/20/hello-world/</url>
@@ -20,7 +80,7 @@
     
     
     <entry>
-      <title>Categories</title>
+      <title>分类</title>
       <link href="/Categories/index.html"/>
       <url>/Categories/index.html</url>
       
@@ -53,7 +113,7 @@
     
     
     <entry>
-      <title>tags</title>
+      <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
       
