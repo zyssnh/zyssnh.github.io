@@ -35,7 +35,7 @@
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[/* 全局背景 */body {    background: url(https://www.zyssnh.xyz/img/GenshinImpact_FurinaRain.png) no-repeat;}]]></content>
+        <content type="html"><![CDATA[/* 全局背景 */body {    background-image: url(https://www.zyssnh.xyz/img/GenshinImpact_FurinaRain.png);}]]></content>
       
     </entry>
     
