@@ -4,6 +4,7 @@ body {
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
     background-attachment: fixed;
+    aspect-ratio: 16/9;
 }
 
 /* 页脚与头图透明 */
