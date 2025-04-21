@@ -2,7 +2,7 @@
 body {
     background-image: url(https://www.zyssnh.xyz/img/Snipaste_2025-04-21_21-23-00.png);
     /* background-size: cover; */
-    /* background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
