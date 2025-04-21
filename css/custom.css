@@ -1,6 +1,8 @@
 /* 全局背景 */
 body {
     background-image: url(https://www.zyssnh.xyz/img/GenshinImpact_FurinaRain.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* 页脚与头图透明 */
