@@ -8,7 +8,7 @@
       <link href="/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
       <url>/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/</url>
       
-        <content type="html"><![CDATA[<h1>定义</h1><p>设函数(z=f(x, y))在点((x_0, y_0))的某一邻域内有定义, 当(y)固定在(y_0)而(x)在(x_0)处有增量(\Delta x)时, 相应的函数有增量:<br>[ f(x_0 + \Delta x, y_0) - f(x_0, y_0) ]<br>若极限:<br>[ \lim\limits_{\Delta x \to 0} \frac{f(x_0 + \Delta x, y_0) - f(x_0, y_0)}{\Delta x} ]<br>存在. 则称此极限为函数(z=f(x, y))在点((x_0, y_0))处对$(x)的偏导数, 记作:<br>[<br>\left.\frac{\partial z}{\partial x}\right|<em>{\substack{x=x_0\\y=y_0}} ,<br>\left.\frac{\partial f}{\partial x}\right|</em>{\substack{x=x_0\\y=y_0}} ,<br>]</p><h1>意义</h1><h2 id="几何意义">几何意义</h2>]]></content>
+        <content type="html"><![CDATA[<h1 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h1><p>设函数(z=f(x, y))在点((x_0, y_0))的某一邻域内有定义, 当(y)固定在(y_0)而(x)在(x_0)处有增量(\Delta x)时, 相应的函数有增量:<br />$$ f(x_0 + \Delta x, y_0) - f(x_0, y_0) $$<br />若极限:<br />[ \lim\limits_{\Delta x \to 0} \frac{f(x_0 + \Delta x, y_0) - f(x_0, y_0)}{\Delta x} ]<br />存在. 则称此极限为函数(z=f(x, y))在点((x_0, y_0))处对$(x)的偏导数, 记作:<br />[<br />\left.\frac{\partial z}{\partial x}\right|<em>{\substack{x=x_0\\y=y_0}} ,<br />\left.\frac{\partial f}{\partial x}\right|</em>{\substack{x=x_0\\y=y_0}} ,<br />]</p><h1 id="意义"><a class="markdownIt-Anchor" href="#意义"></a> 意义</h1><h2 id="几何意义"><a class="markdownIt-Anchor" href="#几何意义"></a> 几何意义</h2>]]></content>
       
       
       <categories>
