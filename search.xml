@@ -8,7 +8,7 @@
       <link href="/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
       <url>/2025/04/21/Learn/Math/%E5%81%8F%E5%AF%BC%E6%95%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h1><p>设函数(z=f(x, y))在点((x_0, y_0))的某一邻域内有定义, 当(y)固定在(y_0)而(x)在(x_0)处有增量(\Delta x)时, 相应的函数有增量:<br />$$ f(x_0 + \Delta x, y_0) - f(x_0, y_0) $$<br />若极限:<br />[ \lim\limits_{\Delta x \to 0} \frac{f(x_0 + \Delta x, y_0) - f(x_0, y_0)}{\Delta x} ]<br />存在. 则称此极限为函数(z=f(x, y))在点((x_0, y_0))处对$(x)的偏导数, 记作:<br />[<br />\left.\frac{\partial z}{\partial x}\right|<em>{\substack{x=x_0\\y=y_0}} ,<br />\left.\frac{\partial f}{\partial x}\right|</em>{\substack{x=x_0\\y=y_0}} ,<br />]</p><h1 id="意义"><a class="markdownIt-Anchor" href="#意义"></a> 意义</h1><h2 id="几何意义"><a class="markdownIt-Anchor" href="#几何意义"></a> 几何意义</h2>]]></content>
+        <content type="html"><![CDATA[<h1 id="定义">定义</h1><p>设函数(z=f(x, y))在点((x_0, y_0))的某一邻域内有定义, 当(y)固定在(y_0)而(x)在(x_0)处有增量(\Delta x)时, 相应的函数有增量:<br>$$ f(x_0 + \Delta x, y_0) - f(x_0, y_0) $$<br>若极限:<br>[ \lim\limits_{\Delta x \to 0} \frac{f(x_0 + \Delta x, y_0) - f(x_0, y_0)}{\Delta x} ]<br>存在. 则称此极限为函数(z=f(x, y))在点((x_0, y_0))处对$(x)的偏导数, 记作:<br>[<br>\left.\frac{\partial z}{\partial x}\right|<em>{\substack{x=x_0\\y=y_0}} ,<br>\left.\frac{\partial f}{\partial x}\right|</em>{\substack{x=x_0\\y=y_0}} ,<br>]</p><h1 id="意义">意义</h1><h2 id="几何意义">几何意义</h2>]]></content>
       
       
       <categories>
@@ -39,7 +39,7 @@
       <link href="/2025/04/21/Learn/Code/Python/"/>
       <url>/2025/04/21/Learn/Code/Python/</url>
       
-        <content type="html"><![CDATA[<h1 id="Python-Web"><a href="#Python-Web" class="headerlink" title="Python Web"></a>Python Web</h1><h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><h3 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject MyProject</span><br></pre></td></tr></table></figure><h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp Myapp</span><br></pre></td></tr></table></figure><h1 id="开发环境管理"><a href="#开发环境管理" class="headerlink" title="开发环境管理"></a>开发环境管理</h1><h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><h3 id="venv"><a href="#venv" class="headerlink" title="venv"></a>venv</h3><h4 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h4><blockquote><p><code>Python3.3</code>及以上版本内置的虚拟环境创建工具</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m venv My_venv</span><br></pre></td></tr></table></figure><h4 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd My_venv/Scripts</span><br><span class="line">source activate</span><br></pre></td></tr></table></figure><h3 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h3>]]></content>
+        <content type="html"><![CDATA[<h1 id="python-web">Python Web</h1><h2 id="django">Django</h2><h3 id="环境部署">环境部署</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure><h3 id="创建项目">创建项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject MyProject</span><br></pre></td></tr></table></figure><h3 id="创建应用">创建应用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp Myapp</span><br></pre></td></tr></table></figure><h1 id="开发环境管理">开发环境管理</h1><h2 id="虚拟环境">虚拟环境</h2><h3 id="venv">venv</h3><h4 id="创建环境">创建环境</h4><blockquote><p><code>Python3.3</code>及以上版本内置的虚拟环境创建工具</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m venv My_venv</span><br></pre></td></tr></table></figure><h4 id="激活环境">激活环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd My_venv/Scripts</span><br><span class="line">source activate</span><br></pre></td></tr></table></figure><h3 id="virtualenv">virtualenv</h3>]]></content>
       
       
       <categories>
@@ -68,7 +68,7 @@
       <link href="/2025/04/20/hello-world/"/>
       <url>/2025/04/20/hello-world/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
       
@@ -91,20 +91,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[/* 全局背景 */body {    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg);    /* background-size: cover; */    /* background-repeat: no-repeat; */    background-attachment: fixed;    aspect-ratio: 16/9;}/* 页脚与头图透明 */#footer {    background: transparent !important;}#page-header {    background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {    background: transparent !important;}#page-header::before {    background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>movies</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -124,11 +113,22 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>movies</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[/* 全局背景 */body {    background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg);    /* background-size: cover; */    /* background-repeat: no-repeat; */    background-attachment: fixed;    aspect-ratio: 16/9;}/* 页脚与头图透明 */#footer {    background: transparent !important;}#page-header {    background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {    background: transparent !important;}#page-header::before {    background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
       
     </entry>
     
