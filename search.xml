@@ -80,22 +80,11 @@
     
     
     <entry>
-      <title>movies</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>分类</title>
+      <link href="/Categories/index.html"/>
+      <url>/Categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/font.css"/>
-      <url>/css/font.css</url>
-      
-        <content type="html"><![CDATA[@font-face {    font-family: 'hexo';    font-display: swap;    src: url('/font/dingliezhuhaifont.ttf') format("truetype");}body {    font-family: 'hexo';}]]></content>
       
     </entry>
     
@@ -124,6 +113,17 @@
     
     
     <entry>
+      <title>movies</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>link</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -135,11 +135,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/Categories/index.html"/>
-      <url>/Categories/index.html</url>
+      <title></title>
+      <link href="/css/font.css"/>
+      <url>/css/font.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[@font-face {    font-family: 'hexo';    font-display: swap;    src: url('/font/dingliezhuhaifont.ttf') format("truetype");}body {    font-family: 'hexo';}]]></content>
       
     </entry>
     
