@@ -4,7 +4,7 @@
     src: url('/font/dingliezhuhaifont.ttf') format("truetype");
 } */
 
-body {
+/* body {
     font-family: "Open Sans", "Microsoft YaHei", sans-serif;
 }
 
@@ -14,4 +14,4 @@ body:lang(en) {
 
 body:lang(zh) {
     font-family: "Microsoft YaHei", sans-serif;
-}
+} */

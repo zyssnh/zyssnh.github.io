@@ -172,7 +172,7 @@
       <link href="/css/font.css"/>
       <url>/css/font.css</url>
       
-        <content type="html"><![CDATA[/* @font-face {    font-family: 'hexo';    font-display: swap;    src: url('/font/dingliezhuhaifont.ttf') format("truetype");} */body {    font-family: "Open Sans", "Microsoft YaHei", sans-serif;}body:lang(en) {    font-family: "Open Sans", sans-serif;}body:lang(zh) {    font-family: "Microsoft YaHei", sans-serif;}]]></content>
+        <content type="html"><![CDATA[/* @font-face {    font-family: 'hexo';    font-display: swap;    src: url('/font/dingliezhuhaifont.ttf') format("truetype");} *//* body {    font-family: "Open Sans", "Microsoft YaHei", sans-serif;}body:lang(en) {    font-family: "Open Sans", sans-serif;}body:lang(zh) {    font-family: "Microsoft YaHei", sans-serif;} */]]></content>
       
     </entry>
     
