@@ -1,4 +1,16 @@
 /* 全局背景 */
+body {
+    /* background: radial-gradient(circle, #C06C84, #6C5B7B, #355C7D); */
+    background: radial-gradient(circle, rgba(204, 83, 51, 0.5), rgba(35, 7, 77, 1));
+    /* background: #355C7D; */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
 /* body {
     background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg);
     background-attachment: fixed;
@@ -6,14 +18,14 @@
 } */
 
 /* 页脚与头图透明 */
-/* #footer {
+#footer {
     background: transparent !important;
 }
-
+/*
 #page-header {
     background: transparent !important;
-} */
-
+} 
+*/
 /* 白天模式遮罩透明 */
 #footer::before {
     background: transparent !important;
