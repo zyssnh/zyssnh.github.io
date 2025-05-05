@@ -1,20 +1,18 @@
 /* 全局背景 */
-body {
+/* body {
     background-image: url(https://www.zyssnh.xyz/img/girl-magical-reading-book.jpg);
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
     background-attachment: fixed;
-    aspect-ratio: 16/9;
-}
+    aspect-ratio: 16/10;
+} */
 
 /* 页脚与头图透明 */
-#footer {
+/* #footer {
     background: transparent !important;
 }
 
 #page-header {
     background: transparent !important;
-}
+} */
 
 /* 白天模式遮罩透明 */
 #footer::before {
