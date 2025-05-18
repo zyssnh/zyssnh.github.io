@@ -1,0 +1,2042 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://.github.io/cs/pcds/distributeds/storage/hadoop/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../message/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Hadoop - 计算机科学</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#4051b5" data-md-color-accent="#4051b5">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hadoop" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="计算机科学" class="md-header__button md-logo" aria-label="计算机科学" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            计算机科学
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hadoop
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="#4051b5" data-md-color-accent="#4051b5"  aria-label="切换到暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="#4051b5" data-md-color-accent="#4051b5"  aria-label="切换到亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cs/" class="md-tabs__link">
+          
+  
+  
+  计算机系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cn/" class="md-tabs__link">
+          
+  
+  
+  计算机网络
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../se/" class="md-tabs__link">
+          
+  
+  
+  软件工程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../dbinfos/" class="md-tabs__link">
+          
+  
+  
+  数据库与信息系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  并行计算分布式系统
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="计算机科学" class="md-nav__button md-logo" aria-label="计算机科学" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    计算机科学
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../cs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    计算机系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../cn/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../se/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    软件工程
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../dbinfos/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    数据库与信息系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    并行计算分布式系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            并行计算分布式系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    并行计算分布式系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../parallelc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    并行计算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    分布式系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            分布式系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    分布式系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../computing/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    分布式计算处理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    分布式存储处理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            分布式存储处理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    分布式存储与处理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hadoop
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hadoop
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本地式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪分布式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全分布式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完全分布式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP与主机名称设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epel-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装软件仓库epel-release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      关闭防火墙
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建用户
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建文件夹
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      卸载系统JDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      克隆虚拟机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdk_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装JDK与配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装Hadoop与配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      分发脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH免密
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全分布式集群
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动集群
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      报错解决
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../message/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    分布式消息队列
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../resource/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    分布式资源管理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../coordination/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    分布式协调服务
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../database/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    分布式数据库系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      环境搭建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境搭建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本地式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪分布式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全分布式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完全分布式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP与主机名称设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epel-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装软件仓库epel-release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      关闭防火墙
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建用户
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建文件夹
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      卸载系统JDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      克隆虚拟机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdk_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装JDK与配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装Hadoop与配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      分发脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH免密
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全分布式集群
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动集群
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      报错解决
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hadoop">Hadoop<a class="headerlink" href="#hadoop" title="Permanent link">&para;</a></h1>
+<!-- 
+<div class="language-yaml highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hadoop</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2025-5-6</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">categories</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">计算机科学</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">系统软件</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">分布式系统</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">分布式计算平台</span>
+</code></pre></div>
+-->
+
+<h2 id="_1">环境搭建<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">本地式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">伪分布式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">完全分布式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Windows</p>
+<p>Windows-11</p>
+<p>VMware</p>
+<p>CentOS</p>
+<p>CentOS-7</p>
+<ul>
+<li>最小系统<blockquote>
+<p>安装依赖 : <code>net-tool</code> <code>vim</code></p>
+</blockquote>
+</li>
+</ul>
+<p>net-tool:</p>
+<p>vim:</p>
+<ul>
+<li>桌面版</li>
+</ul>
+<h5 id="ip">IP与主机名称设置<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h5>
+<h6 id="ip_1">IP设置<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h6>
+<p>修改<code>ip</code>地址
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>su<span class="w"> </span>root
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/sysconfig/network-scripts/ifcfg-ens33
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 增加与修改</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;static&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a><span class="nv">IPADDR</span><span class="o">=</span><span class="m">192</span>.168.10.100
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a><span class="nv">GATEWAY</span><span class="o">=</span><span class="m">192</span>.168.10.2
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a><span class="nv">DNS1</span><span class="o">=</span><span class="m">192</span>.168.10.2
+</code></pre></div></p>
+<h6 id="_5">主机名称修改<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h6>
+<p>修改<code>hostname</code>名称
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/hostname
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 增加或修改</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>hadoop100
+</code></pre></div></p>
+<h6 id="_6">主机名称映射<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h6>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/hosts
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="c1"># 增加</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="m">192</span>.168.10.100<span class="w">  </span>hadoop100
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="m">192</span>.168.10.101<span class="w">  </span>hadoop101
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="m">192</span>.168.10.102<span class="w">  </span>hadoop102
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="m">192</span>.168.10.103<span class="w">  </span>hadoop103
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="m">192</span>.168.10.104<span class="w">  </span>hadoop104
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="m">192</span>.168.10.105<span class="w">  </span>hadoop105
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="m">192</span>.168.10.106<span class="w">  </span>hadoop106
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="m">192</span>.168.10.107<span class="w">  </span>hadoop107
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="m">192</span>.168.10.108<span class="w">  </span>hadoop108
+</code></pre></div>
+<blockquote>
+<p>IP与主机名称设置结束 -&gt; 使用<code>reboot</code>重启系统  使用<code>ping</code>测试网络</p>
+</blockquote>
+<h6 id="windows">Windows主机映射文件<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h6>
+<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c"># 打开</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Windows</span><span class="p">\</span><span class="n">System32</span><span class="p">\</span><span class="n">drivers</span><span class="p">\</span><span class="n">etc</span><span class="p">\</span><span class="n">hosts</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c"># 添加</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">100</span>  <span class="n">hadoop100</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">101</span>  <span class="n">hadoop101</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">102</span>  <span class="n">hadoop102</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">103</span>  <span class="n">hadoop103</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">104</span>  <span class="n">hadoop104</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">105</span>  <span class="n">hadoop105</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">106</span>  <span class="n">hadoop106</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">107</span>  <span class="n">hadoop107</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">108</span>  <span class="n">hadoop108</span>
+</code></pre></div>
+<h5 id="epel-release">安装软件仓库<code>epel-release</code><a class="headerlink" href="#epel-release" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><code>epel-release</code> : <code>Extra Packages for Enterprise Linux</code></p>
+</blockquote>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+</code></pre></div>
+<h5 id="_7">关闭防火墙<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 关闭防火墙</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>firewalld
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 关闭自启防火墙</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>firewalld.serviece
+</code></pre></div>
+<h5 id="_8">创建用户<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>useradd<span class="w"> </span>username
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>passwd<span class="w"> </span>password
+</code></pre></div>
+<ul>
+<li>为所建用户添加<code>sudo</code>权限
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/sudoers
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 添加</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1">## Allow root to run any commands anywhere</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos="4 "></span></a>root<span class="w">      </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w">       </span>ALL
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos="6 "></span></a><span class="c1">## Allows people in group whell to run all commands</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos="7 "></span></a>%whell<span class="w">    </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w">       </span>ALL
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos="8 "></span></a>username<span class="w">  </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w">       </span>NOPASSWD:ALL<span class="w">  </span><span class="c1"># 添加</span>
+</code></pre></div></li>
+</ul>
+<h5 id="_9">创建文件夹<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>mkdir<span class="w"> </span>/opt/module
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>mkdir<span class="w"> </span>/opt/software
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 修改文件夹的所有者与所属组</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos="4 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>chown<span class="w"> </span>username:username<span class="w"> </span>/opt/module
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>chown<span class="w"> </span>username:username<span class="w"> </span>/opt/software
+</code></pre></div>
+<h5 id="jdk">卸载系统JDK<a class="headerlink" href="#jdk" title="Permanent link">&para;</a></h5>
+<p><div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>java<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n1<span class="w"> </span>rpm<span class="w"> </span>-e<span class="w"> </span>--nodeps<span class="w"> </span>
+</code></pre></div>
+- <code>rpm -qa</code> : 查询所安装的全部<code>rpm</code>软件包
+- <code>grep -i</code> : 忽略大小写
+- <code>xargs -n1</code> : 表示每次传递一个参数
+- <code>rpm -e --nodeps</code> : 强制删除软件</p>
+<blockquote>
+<p><code>reboot</code>重启系统</p>
+</blockquote>
+<h5 id="_10">克隆虚拟机<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<p>修改其<code>IP地址</code>与<code>主机名称</code>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 修改IP地址 此为第x台虚拟机 则:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/sysconfig/network-scripts/ifcfg-ens33
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 修改</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos="4 "></span></a><span class="nv">IPADDR</span><span class="o">=</span><span class="m">192</span>.168.10.10x
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/hostname
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos="6 "></span></a><span class="c1"># 修改</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos="7 "></span></a>hadoop10x
+</code></pre></div></p>
+<h5 id="jdk_1">安装JDK与配置<a class="headerlink" href="#jdk_1" title="Permanent link">&para;</a></h5>
+<p>将<code>JDK</code>传入<code>/opt/software</code>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/software
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c1"># 安装</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>jdk-8u212-linux-x64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/opt/module/
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="c1"># 配置</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/profile.d/my_env.sh
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="c1">## 添加</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><a href="#__codelineno-12-10"><span class="linenos" data-linenos="10 "></span></a><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/opt/module/jdk1.8.0_212
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><a href="#__codelineno-12-11"><span class="linenos" data-linenos="11 "></span></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><a href="#__codelineno-12-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><a href="#__codelineno-12-13"><span class="linenos" data-linenos="13 "></span></a><span class="c1"># 加载</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><a href="#__codelineno-12-14"><span class="linenos" data-linenos="14 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/etc/profile
+</code></pre></div></p>
+<h5 id="hadoop_1">安装Hadoop与配置<a class="headerlink" href="#hadoop_1" title="Permanent link">&para;</a></h5>
+<p>将<code>Hadoop</code>传入<code>/opt/software</code>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/software
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c1"># 安装</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><a href="#__codelineno-13-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>hadoop-3.1.3.tar.gz<span class="w"> </span>-C<span class="w"> </span>/opt/module/
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><a href="#__codelineno-13-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><a href="#__codelineno-13-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="c1"># 配置</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><a href="#__codelineno-13-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/profile.d/my_env.sh
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><a href="#__codelineno-13-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><a href="#__codelineno-13-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="c1">## 增加</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><a href="#__codelineno-13-10"><span class="linenos" data-linenos="10 "></span></a><span class="nb">export</span><span class="w"> </span><span class="nv">HADOOP_HOME</span><span class="o">=</span>/opt/module/hadoop-3.1.3
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><a href="#__codelineno-13-11"><span class="linenos" data-linenos="11 "></span></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><a href="#__codelineno-13-12"><span class="linenos" data-linenos="12 "></span></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/sbin
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><a href="#__codelineno-13-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><a href="#__codelineno-13-14"><span class="linenos" data-linenos="14 "></span></a><span class="c1"># 加载</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><a href="#__codelineno-13-15"><span class="linenos" data-linenos="15 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/etc/profile
+</code></pre></div></p>
+<blockquote>
+<p>! 分发脚本
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/module/
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 推送或拉取jdk, hadoop</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><a href="#__codelineno-14-4"><span class="linenos" data-linenos="4 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>scp<span class="w"> </span>-r<span class="w"> </span>jdk1.8.0_212/<span class="w"> </span>user@hostname:/opt/module/
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><a href="#__codelineno-14-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>scp<span class="w"> </span>-r<span class="w"> </span>user@hostname:/opt/module/hadoop-3.1.3<span class="w"> </span>./
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><a href="#__codelineno-14-6"><span class="linenos" data-linenos="6 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>scp<span class="w"> </span>-r<span class="w"> </span>user@hostname:/opt/module/*<span class="w"> </span>user@hostname:/opt/module/
+</code></pre></div></p>
+</blockquote>
+<h5 id="_11">分发脚本<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/user/
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><a href="#__codelineno-15-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>bin
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><a href="#__codelineno-15-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>bin/
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><a href="#__codelineno-15-4"><span class="linenos" data-linenos="4 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>xsync
+</code></pre></div>
+<p><strong>xsync</strong>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c1">#1. 判断参数个数</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">then</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>Not<span class="w"> </span>Enough<span class="w"> </span>Arguement!
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><a href="#__codelineno-16-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span>exit<span class="p">;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><a href="#__codelineno-16-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">fi</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a><a href="#__codelineno-16-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="c1">#2. 遍历集群所有机器</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a><a href="#__codelineno-16-10"><span class="linenos" data-linenos="10 "></span></a><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span>hadoop102<span class="w"> </span>hadoop103<span class="w"> </span>hadoop104
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a><a href="#__codelineno-16-11"><span class="linenos" data-linenos="11 "></span></a><span class="k">do</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a><a href="#__codelineno-16-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="o">====================</span><span class="w">  </span><span class="nv">$host</span><span class="w">  </span><span class="o">====================</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a><a href="#__codelineno-16-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="c1">#3. 遍历所有目录，挨个发送</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a><a href="#__codelineno-16-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a><a href="#__codelineno-16-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$@</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a><a href="#__codelineno-16-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="k">do</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a><a href="#__codelineno-16-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">        </span><span class="c1">#4. 判断文件是否存在</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a><a href="#__codelineno-16-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-e<span class="w"> </span><span class="nv">$file</span><span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a><a href="#__codelineno-16-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">            </span><span class="k">then</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a><a href="#__codelineno-16-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">                </span><span class="c1">#5. 获取父目录</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21"></a><a href="#__codelineno-16-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">                </span><span class="nv">pdir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span><span class="w"> </span>-P<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$file</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="nb">pwd</span><span class="k">)</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22"></a><a href="#__codelineno-16-22"><span class="linenos" data-linenos="22 "></span></a>
+<a id="__codelineno-16-23" name="__codelineno-16-23"></a><a href="#__codelineno-16-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">                </span><span class="c1">#6. 获取当前文件的名称</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24"></a><a href="#__codelineno-16-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">                </span><span class="nv">fname</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="k">)</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25"></a><a href="#__codelineno-16-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">                </span>ssh<span class="w"> </span><span class="nv">$host</span><span class="w"> </span><span class="s2">&quot;mkdir -p </span><span class="nv">$pdir</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26"></a><a href="#__codelineno-16-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">                </span>rsync<span class="w"> </span>-av<span class="w"> </span><span class="nv">$pdir</span>/<span class="nv">$fname</span><span class="w"> </span><span class="nv">$host</span>:<span class="nv">$pdir</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27"></a><a href="#__codelineno-16-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">            </span><span class="k">else</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28"></a><a href="#__codelineno-16-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exists!
+<a id="__codelineno-16-29" name="__codelineno-16-29"></a><a href="#__codelineno-16-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30"></a><a href="#__codelineno-16-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">    </span><span class="k">done</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31"></a><a href="#__codelineno-16-31"><span class="linenos" data-linenos="31 "></span></a><span class="k">done</span>
+</code></pre></div></p>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 增加权限使其可执行</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>xsync
+</code></pre></div>
+<h6 id="_12">分发环境变量<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h6>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>./bin/xsync<span class="w"> </span>/etc/profile.d/my_env.sh
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/etc/profile
+</code></pre></div>
+<h5 id="ssh">SSH免密<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h5>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 生成密钥</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 复制密钥</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><a href="#__codelineno-19-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>ssh-copy-id<span class="w"> </span>user@hostname
+</code></pre></div>
+<h5 id="_13">完全分布式集群<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
+<h6 id="_14">核心配置文件<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h6>
+<p><div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HADOOP_HOME</span>/etc/hadoop
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>core-site.xml
+</code></pre></div>
+<code>core-site.xml</code>
+<div class="language-xml highlight"><span class="filename">XML</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><a href="#__codelineno-21-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><a href="#__codelineno-21-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><a href="#__codelineno-21-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nt">&lt;configuration&gt;</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><a href="#__codelineno-21-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 指定NameNode的地址 --&gt;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a><a href="#__codelineno-21-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><a href="#__codelineno-21-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a><a href="#__codelineno-21-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>hdfs://hadoop102:8020<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><a href="#__codelineno-21-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a><a href="#__codelineno-21-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a><a href="#__codelineno-21-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 指定hadoop数据的存储目录 --&gt;</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a><a href="#__codelineno-21-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a><a href="#__codelineno-21-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>hadoop.tmp.dir<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a><a href="#__codelineno-21-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>/opt/module/hadoop-3.1.3/data<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a><a href="#__codelineno-21-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a><a href="#__codelineno-21-16"><span class="linenos" data-linenos="16 "></span></a>
+<a id="__codelineno-21-17" name="__codelineno-21-17"></a><a href="#__codelineno-21-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 配置HDFS网页登录使用的静态用户为atguigu --&gt;</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18"></a><a href="#__codelineno-21-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19"></a><a href="#__codelineno-21-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>hadoop.http.staticuser.user<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20"></a><a href="#__codelineno-21-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>user<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21"></a><a href="#__codelineno-21-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22"></a><a href="#__codelineno-21-22"><span class="linenos" data-linenos="22 "></span></a><span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></p>
+<p><div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>hdfs-site.xml
+</code></pre></div>
+<code>hdfs-site.xml</code>
+<div class="language-xml highlight"><span class="filename">XML</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><a href="#__codelineno-23-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><a href="#__codelineno-23-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><a href="#__codelineno-23-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nt">&lt;configuration&gt;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><a href="#__codelineno-23-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="cm">&lt;!-- nn web端访问地址--&gt;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><a href="#__codelineno-23-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><a href="#__codelineno-23-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>dfs.namenode.http-address<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a><a href="#__codelineno-23-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>hadoop102:9870<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><a href="#__codelineno-23-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a><a href="#__codelineno-23-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 2nn web端访问地址--&gt;</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><a href="#__codelineno-23-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a><a href="#__codelineno-23-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>dfs.namenode.secondary.http-address<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a><a href="#__codelineno-23-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>hadoop104:9868<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a><a href="#__codelineno-23-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a><a href="#__codelineno-23-15"><span class="linenos" data-linenos="15 "></span></a><span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>yarn-site.xml
+</code></pre></div>
+<code>yarn-site.xml</code>
+<div class="language-xml highlight"><span class="filename">XML</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><a href="#__codelineno-25-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><a href="#__codelineno-25-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nt">&lt;configuration&gt;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a><a href="#__codelineno-25-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 指定MR走shuffle --&gt;</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a><a href="#__codelineno-25-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a><a href="#__codelineno-25-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8"></a><a href="#__codelineno-25-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9"></a><a href="#__codelineno-25-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10"></a><a href="#__codelineno-25-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11"></a><a href="#__codelineno-25-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 指定ResourceManager的地址--&gt;</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12"></a><a href="#__codelineno-25-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13"></a><a href="#__codelineno-25-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14"></a><a href="#__codelineno-25-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>hadoop103<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15"></a><a href="#__codelineno-25-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16"></a><a href="#__codelineno-25-16"><span class="linenos" data-linenos="16 "></span></a>
+<a id="__codelineno-25-17" name="__codelineno-25-17"></a><a href="#__codelineno-25-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 环境变量的继承 --&gt;</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18"></a><a href="#__codelineno-25-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19"></a><a href="#__codelineno-25-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>yarn.nodemanager.env-whitelist<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20"></a><a href="#__codelineno-25-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-25-21" name="__codelineno-25-21"></a><a href="#__codelineno-25-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-25-22" name="__codelineno-25-22"></a><a href="#__codelineno-25-22"><span class="linenos" data-linenos="22 "></span></a><span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></p>
+<p><div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><a href="#__codelineno-26-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>mapred-site.xml
+</code></pre></div>
+<code>mapred-site.xml</code>
+<div class="language-xml highlight"><span class="filename">XML</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><a href="#__codelineno-27-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><a href="#__codelineno-27-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><a href="#__codelineno-27-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><a href="#__codelineno-27-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nt">&lt;configuration&gt;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a><a href="#__codelineno-27-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="cm">&lt;!-- 指定MapReduce程序运行在Yarn上 --&gt;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a><a href="#__codelineno-27-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">&lt;property&gt;</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a><a href="#__codelineno-27-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a><a href="#__codelineno-27-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9"></a><a href="#__codelineno-27-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">&lt;/property&gt;</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10"></a><a href="#__codelineno-27-10"><span class="linenos" data-linenos="10 "></span></a><span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></p>
+<p><code>workers</code>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># 进入Hadoop工作目录</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><a href="#__codelineno-28-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/hadoop/etc/hadoop
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><a href="#__codelineno-28-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>vim<span class="w"> </span>workers
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a><a href="#__codelineno-28-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="c1"># 添加工作节点 替换为主机名称</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a><a href="#__codelineno-28-5"><span class="linenos" data-linenos=" 5 "></span></a>hadoop101
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a><a href="#__codelineno-28-6"><span class="linenos" data-linenos=" 6 "></span></a>hadoop102
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a><a href="#__codelineno-28-7"><span class="linenos" data-linenos=" 7 "></span></a>hadoop103
+<a id="__codelineno-28-8" name="__codelineno-28-8"></a><a href="#__codelineno-28-8"><span class="linenos" data-linenos=" 8 "></span></a>hadoop104
+<a id="__codelineno-28-9" name="__codelineno-28-9"></a><a href="#__codelineno-28-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="c1"># 分发脚本 至所有节点 节点名称为主机名</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10"></a><a href="#__codelineno-28-10"><span class="linenos" data-linenos="10 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>xsync<span class="w"> </span>workers
+</code></pre></div></p>
+<h6 id="_15">集群分发配置文件<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h6>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/opt/module/hadoop-3.1.3/etc
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><a href="#__codelineno-29-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>xsync<span class="w"> </span>hadoop/
+</code></pre></div>
+<h5 id="_16">启动集群<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h5>
+<p><strong>初始化</strong>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>user@hostname<span class="o">]</span>$<span class="w"> </span>
+</code></pre></div></p>
+<h2 id="_17">报错解决<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h6 id="_18">软件仓库安装失败<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h6>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos=" 2 "></span></a>已加载插件：fastestmirror,<span class="w"> </span>langpacks
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><a href="#__codelineno-31-3"><span class="linenos" data-linenos=" 3 "></span></a>Loading<span class="w"> </span>mirror<span class="w"> </span>speeds<span class="w"> </span>from<span class="w"> </span>cached<span class="w"> </span>hostfile
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a><a href="#__codelineno-31-4"><span class="linenos" data-linenos=" 4 "></span></a>Could<span class="w"> </span>not<span class="w"> </span>retrieve<span class="w"> </span>mirrorlist<span class="w"> </span>http://mirrorlist.centos.org/?release<span class="o">=</span><span class="m">7</span><span class="p">&amp;</span><span class="nv">arch</span><span class="o">=</span>x86_64<span class="p">&amp;</span><span class="nv">repo</span><span class="o">=</span>os<span class="p">&amp;</span><span class="nv">infra</span><span class="o">=</span>stock<span class="w"> </span>error<span class="w"> </span>was
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a><a href="#__codelineno-31-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="m">14</span>:<span class="w"> </span>curl#6<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;Could not resolve host: mirrorlist.centos.org; 未知的错误&quot;</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a><a href="#__codelineno-31-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-31-7" name="__codelineno-31-7"></a><a href="#__codelineno-31-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">  </span>One<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>configured<span class="w"> </span>repositories<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>未知<span class="o">)</span>,
+<a id="__codelineno-31-8" name="__codelineno-31-8"></a><a href="#__codelineno-31-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">  </span>and<span class="w"> </span>yum<span class="w"> </span>doesn<span class="s1">&#39;t have enough cached data to continue. At this point the only</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9"></a><a href="#__codelineno-31-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="s1">  safe thing yum can do is fail. There are a few ways to work &quot;fix&quot; this:</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10"></a><a href="#__codelineno-31-10"><span class="linenos" data-linenos="10 "></span></a><span class="s1">      1. Contact the upstream for the repository and get them to fix the problem.</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11"></a><a href="#__codelineno-31-11"><span class="linenos" data-linenos="11 "></span></a><span class="s1">      2. Reconfigure the baseurl/etc. for the repository, to point to a working</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12"></a><a href="#__codelineno-31-12"><span class="linenos" data-linenos="12 "></span></a><span class="s1">        upstream. This is most often useful if you are using a newer</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13"></a><a href="#__codelineno-31-13"><span class="linenos" data-linenos="13 "></span></a><span class="s1">        distribution release than is supported by the repository (and the</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14"></a><a href="#__codelineno-31-14"><span class="linenos" data-linenos="14 "></span></a><span class="s1">        packages for the previous distribution release still work).</span>
+<a id="__codelineno-31-15" name="__codelineno-31-15"></a><a href="#__codelineno-31-15"><span class="linenos" data-linenos="15 "></span></a><span class="s1">      3. Run the command with the repository temporarily disabled</span>
+<a id="__codelineno-31-16" name="__codelineno-31-16"></a><a href="#__codelineno-31-16"><span class="linenos" data-linenos="16 "></span></a><span class="s1">            yum --disablerepo=&lt;repoid&gt; ...</span>
+<a id="__codelineno-31-17" name="__codelineno-31-17"></a><a href="#__codelineno-31-17"><span class="linenos" data-linenos="17 "></span></a><span class="s1">      4. Disable the repository permanently, so yum won&#39;</span>t<span class="w"> </span>use<span class="w"> </span>it<span class="w"> </span>by<span class="w"> </span>default.<span class="w"> </span>Yum
+<a id="__codelineno-31-18" name="__codelineno-31-18"></a><a href="#__codelineno-31-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">        </span>will<span class="w"> </span><span class="k">then</span><span class="w"> </span>just<span class="w"> </span>ignore<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span><span class="k">until</span><span class="w"> </span>you<span class="w"> </span>permanently<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>it
+<a id="__codelineno-31-19" name="__codelineno-31-19"></a><a href="#__codelineno-31-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span>again<span class="w"> </span>or<span class="w"> </span>use<span class="w"> </span>--enablerepo<span class="w"> </span><span class="k">for</span><span class="w"> </span>temporary<span class="w"> </span>usage:
+<a id="__codelineno-31-20" name="__codelineno-31-20"></a><a href="#__codelineno-31-20"><span class="linenos" data-linenos="20 "></span></a>
+<a id="__codelineno-31-21" name="__codelineno-31-21"></a><a href="#__codelineno-31-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">            </span>yum-config-manager<span class="w"> </span>--disable<span class="w"> </span>&lt;repoid&gt;
+<a id="__codelineno-31-22" name="__codelineno-31-22"></a><a href="#__codelineno-31-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span>or
+<a id="__codelineno-31-23" name="__codelineno-31-23"></a><a href="#__codelineno-31-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">            </span>subscription-manager<span class="w"> </span>repos<span class="w"> </span>--disable<span class="o">=</span>&lt;repoid&gt;
+<a id="__codelineno-31-24" name="__codelineno-31-24"></a><a href="#__codelineno-31-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">      </span><span class="m">5</span>.<span class="w"> </span>Configure<span class="w"> </span>the<span class="w"> </span>failing<span class="w"> </span>repository<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>skipped,<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>unavailable.
+<a id="__codelineno-31-25" name="__codelineno-31-25"></a><a href="#__codelineno-31-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">        </span>Note<span class="w"> </span>that<span class="w"> </span>yum<span class="w"> </span>will<span class="w"> </span>try<span class="w"> </span>to<span class="w"> </span>contact<span class="w"> </span>the<span class="w"> </span>repo.<span class="w"> </span>when<span class="w"> </span>it<span class="w"> </span>runs<span class="w"> </span>most<span class="w"> </span>commands,
+<a id="__codelineno-31-26" name="__codelineno-31-26"></a><a href="#__codelineno-31-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span>so<span class="w"> </span>will<span class="w"> </span>have<span class="w"> </span>to<span class="w"> </span>try<span class="w"> </span>and<span class="w"> </span>fail<span class="w"> </span>each<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="o">(</span>and<span class="w"> </span>thus.<span class="w"> </span>yum<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>be<span class="w"> </span>much
+<a id="__codelineno-31-27" name="__codelineno-31-27"></a><a href="#__codelineno-31-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">        </span>slower<span class="o">)</span>.<span class="w"> </span>If<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>very<span class="w"> </span>temporary<span class="w"> </span>problem<span class="w"> </span>though,<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>often<span class="w"> </span>a<span class="w"> </span>nice
+<a id="__codelineno-31-28" name="__codelineno-31-28"></a><a href="#__codelineno-31-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span>compromise:
+<a id="__codelineno-31-29" name="__codelineno-31-29"></a><a href="#__codelineno-31-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">            </span>yum-config-manager<span class="w"> </span>--save<span class="w"> </span>--setopt<span class="o">=</span>&lt;repoid&gt;.skip_if_unavailable<span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-31-30" name="__codelineno-31-30"></a><a href="#__codelineno-31-30"><span class="linenos" data-linenos="30 "></span></a>Cannot<span class="w"> </span>find<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>baseurl<span class="w"> </span><span class="k">for</span><span class="w"> </span>repo:<span class="w"> </span>base/7/x86_64
+</code></pre></div>
+<ol>
+<li>
+<p>手动创建<code>CentOS-Base.repo</code>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># 备份并删除原有错误配置</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><a href="#__codelineno-32-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>mv<span class="w"> </span>/etc/yum.repos.d/CentOS-Base.repo<span class="w"> </span>/etc/yum.repos.d/CentOS-Base.repo.bak
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><a href="#__codelineno-32-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a><a href="#__codelineno-32-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="c1"># 创建新的 CentOS-Base.repo</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5"></a><a href="#__codelineno-32-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>vim<span class="w"> </span>/etc/yum.repos.d/CentOS-Base.repo
+<a id="__codelineno-32-6" name="__codelineno-32-6"></a><a href="#__codelineno-32-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-32-7" name="__codelineno-32-7"></a><a href="#__codelineno-32-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="c1"># 适用于 CentOS 7 Vault</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8"></a><a href="#__codelineno-32-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="o">[</span>base<span class="o">]</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9"></a><a href="#__codelineno-32-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nv">name</span><span class="o">=</span>CentOS-7<span class="w"> </span>-<span class="w"> </span>Base<span class="w"> </span><span class="o">(</span>Vault<span class="o">)</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10"></a><a href="#__codelineno-32-10"><span class="linenos" data-linenos="10 "></span></a><span class="nv">baseurl</span><span class="o">=</span>http://vault.centos.org/centos/7/os/<span class="nv">$basearch</span>/
+<a id="__codelineno-32-11" name="__codelineno-32-11"></a><a href="#__codelineno-32-11"><span class="linenos" data-linenos="11 "></span></a><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12"></a><a href="#__codelineno-32-12"><span class="linenos" data-linenos="12 "></span></a><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+<a id="__codelineno-32-13" name="__codelineno-32-13"></a><a href="#__codelineno-32-13"><span class="linenos" data-linenos="13 "></span></a><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14"></a><a href="#__codelineno-32-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-32-15" name="__codelineno-32-15"></a><a href="#__codelineno-32-15"><span class="linenos" data-linenos="15 "></span></a><span class="o">[</span>updates<span class="o">]</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16"></a><a href="#__codelineno-32-16"><span class="linenos" data-linenos="16 "></span></a><span class="nv">name</span><span class="o">=</span>CentOS-7<span class="w"> </span>-<span class="w"> </span>Updates<span class="w"> </span><span class="o">(</span>Vault<span class="o">)</span>
+<a id="__codelineno-32-17" name="__codelineno-32-17"></a><a href="#__codelineno-32-17"><span class="linenos" data-linenos="17 "></span></a><span class="nv">baseurl</span><span class="o">=</span>http://vault.centos.org/centos/7/updates/<span class="nv">$basearch</span>/
+<a id="__codelineno-32-18" name="__codelineno-32-18"></a><a href="#__codelineno-32-18"><span class="linenos" data-linenos="18 "></span></a><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-32-19" name="__codelineno-32-19"></a><a href="#__codelineno-32-19"><span class="linenos" data-linenos="19 "></span></a><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+<a id="__codelineno-32-20" name="__codelineno-32-20"></a><a href="#__codelineno-32-20"><span class="linenos" data-linenos="20 "></span></a><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-32-21" name="__codelineno-32-21"></a><a href="#__codelineno-32-21"><span class="linenos" data-linenos="21 "></span></a>
+<a id="__codelineno-32-22" name="__codelineno-32-22"></a><a href="#__codelineno-32-22"><span class="linenos" data-linenos="22 "></span></a><span class="o">[</span>extras<span class="o">]</span>
+<a id="__codelineno-32-23" name="__codelineno-32-23"></a><a href="#__codelineno-32-23"><span class="linenos" data-linenos="23 "></span></a><span class="nv">name</span><span class="o">=</span>CentOS-7<span class="w"> </span>-<span class="w"> </span>Extras<span class="w"> </span><span class="o">(</span>Vault<span class="o">)</span>
+<a id="__codelineno-32-24" name="__codelineno-32-24"></a><a href="#__codelineno-32-24"><span class="linenos" data-linenos="24 "></span></a><span class="nv">baseurl</span><span class="o">=</span>http://vault.centos.org/centos/7/extras/<span class="nv">$basearch</span>/
+<a id="__codelineno-32-25" name="__codelineno-32-25"></a><a href="#__codelineno-32-25"><span class="linenos" data-linenos="25 "></span></a><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-32-26" name="__codelineno-32-26"></a><a href="#__codelineno-32-26"><span class="linenos" data-linenos="26 "></span></a><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+<a id="__codelineno-32-27" name="__codelineno-32-27"></a><a href="#__codelineno-32-27"><span class="linenos" data-linenos="27 "></span></a><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>验证仓库配置
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 清理并重建缓存</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a><a href="#__codelineno-33-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>yum<span class="w"> </span>clean<span class="w"> </span>all
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a><a href="#__codelineno-33-3"><span class="linenos" data-linenos="3 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>yum<span class="w"> </span>makecache
+</code></pre></div></p>
+</li>
+<li>
+<p>安装<code>EPEL</code>仓库
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><a href="#__codelineno-34-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>root@hostname<span class="o">]</span><span class="se">\#</span><span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+</code></pre></div></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 分布式存储与处理">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                分布式存储与处理
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../message/" class="md-footer__link md-footer__link--next" aria-label="下一页: 分布式消息队列">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                分布式消息队列
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.expand", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
