@@ -1,5 +1,5 @@
 ---
-title: CPlusPlus
+title: C++
 categories:
   - 编程语言
 tags:
@@ -9,7 +9,7 @@ date: 2025-05-30T12:27:00
 
 # C++
 ---
-1
+
 
 #在线文档
 
