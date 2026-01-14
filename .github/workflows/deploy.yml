@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master] # 如果你的主分支是 master，请修改此处
+    branches: [ master ] # 或者是你的默认分支名
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,6 +16,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload with Astro
-        uses: withastro/action@v2
-        # 如果你使用 pnpm，可以参考 Astro 官方文档添加配置
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+        # 如果你使用 pnpm 或 yarn，action 会自动检测
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
