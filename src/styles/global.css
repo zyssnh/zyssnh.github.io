@@ -1,0 +1,138 @@
+/* 重置样式（消除浏览器默认差异） */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #f1f5f9;
+  font-family: "Inter", sans-serif;
+  /* 统一字体 */
+}
+
+/* 全局基础样式（统一样式核心） */
+body {
+  width: 100%;
+  max-width: 80ch;
+  line-height: 1.6;
+  /* 统一行高 */
+  margin: 0 auto;
+  /* 居中内容 */
+  padding: 1rem;
+  /* 全局内边距 */
+  color: #333;
+  /* 统一文本颜色 */
+  /* background-color: #f9f9f9; */
+  /* 统一背景色 */
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+/* 全局组件样式（如按钮、链接） */
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* 导航样式 */
+.menu {
+  background-color: #0d0950;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.nav-links {
+  width: 100%;
+  display: none;
+  margin: 0;
+}
+
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0d0950;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: #ff9776;
+}
+
+:has(.menu[aria-expanded="true"]) .nav-links {
+  display: unset;
+}
+
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .menu {
+    display: none;
+  }
+}
+
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+html.dark body {
+  color: #fff;
+  background: #0d0950;
+}
+
+.dark .menu {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark .nav-links a:hover,
+.dark .nav-links a:focus {
+  color: #0d0950;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
+.dark a {
+  color: #ff9776;
+}
