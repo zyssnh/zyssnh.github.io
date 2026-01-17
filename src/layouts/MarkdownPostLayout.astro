@@ -1,25 +1,78 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+    frontmatter: {
+        title: string;
+        description?: string;
+        pubDate?: Date;
+        author?: string;
+        image?: {
+            url: string;
+            alt: string;
+        };
+        tags?: string[];
+    };
+}
+
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>作者：{frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-
-    <div class="tags">
+    <!-- 文章元信息 -->
+    <header class="mb-8">
         {
-            frontmatter.tags.map((tag: string) => (
-                <p class="tag">
-                    <a href={`/tags/${tag}`}>{tag}</a>
+            frontmatter.pubDate && (
+                <p class="text-sm text-gray-500">
+                    {frontmatter.pubDate.toString().slice(0, 10)}
                 </p>
-            ))
+            )
         }
-    </div>
-    <slot />
+
+        {
+            frontmatter.description && (
+                <p class="mt-2 text-lg text-gray-600">
+                    <em>{frontmatter.description}</em>
+                </p>
+            )
+        }
+
+        {
+            frontmatter.author && (
+                <p class="mt-1 text-sm">作者：{frontmatter.author}</p>
+            )
+        }
+
+        {
+            frontmatter.image && (
+                <img
+                    class="my-6 rounded"
+                    src={frontmatter.image.url}
+                    width="300"
+                    alt={frontmatter.image.alt}
+                />
+            )
+        }
+
+        {
+            frontmatter.tags && (
+                <div class="tags mt-4">
+                    {frontmatter.tags.map((tag: string) => (
+                        <p class="tag">
+                            <a href={`/tags/${tag}`}>{tag}</a>
+                        </p>
+                    ))}
+                </div>
+            )
+        }
+    </header>
+
+    <!-- Markdown 内容排版 -->
+    <article class="prose prose-slate max-w-none">
+        <slot />
+    </article>
 </BaseLayout>
+
 <style>
     a {
         color: #00539f;

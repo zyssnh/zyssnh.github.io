@@ -1,3 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@reference "tailwindcss";
+
+.prose h1 {
+  @apply text-3xl font-bold;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 rounded;
+}
+
+
 /* 重置样式（消除浏览器默认差异） */
 * {
   box-sizing: border-box;
@@ -136,3 +151,17 @@ html.dark body {
 .dark a {
   color: #ff9776;
 }
+
+/* src/styles/global.css */
+/* 
+.prose h1 {
+  @apply text-3xl font-bold;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 rounded;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-gray-100;
+} */
