@@ -1,7 +1,47 @@
 ---
-
+/* 纯展示组件，不写 JS */
 ---
 
-<button aria-expanded="false" aria-controls="main-menu" class="menu">
-    Menu
-</button>
+<div class="relative">
+    <!-- 菜单按钮 -->
+    <button
+        id="menu-button"
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2
+           light:text-gray-800 light:hover:bg-gray-100
+           dark:text-amber-50 dark:hover:bg-white/10
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           focus:ring-blue-500"
+        aria-expanded="false"
+        aria-controls="menu-panel"
+        aria-label="打开菜单"
+    >
+        <!-- 汉堡图标 -->
+        <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- 菜单面板 -->
+    <nav
+        id="menu-panel"
+        class="hidden absolute left-0 mt-3 w-56 rounded-lg
+           light:bg-white light:shadow-lg light:border
+           dark:bg-slate-900 dark:border-slate-700"
+    >
+        <ul class="flex flex-col p-4 gap-3 text-sm">
+            <li><a href="/" class="menu-link">首页</a></li>
+            <li><a href="/posts" class="menu-link">文章</a></li>
+            <li><a href="/about" class="menu-link">关于</a></li>
+        </ul>
+    </nav>
+</div>

@@ -3,17 +3,14 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: '测试-KaTeX'
 author: 'Astro 学习者'
 description: "这篇文章会自己出现在列表中！"
-# image:
-#   url: "https://docs.astro.build/default-og-image.png"
+image:
+  url: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 #   alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["学习", "测试", "数学", "KaTex"]
 ---
 
-# KaTeX 基本数学公式语法速查（Markdown）
-
-本文档用于展示 **Astro + KaTeX（remark-math + rehype-katex）** 在 Markdown 中支持的常见数学公式写法。  
-所有公式均在 **构建阶段渲染**，适用于博客、文档站点与知识库。
+本文档用于展示 **Astro + KaTeX（remark-math + rehype-katex）** 在 Markdown 中支持的常见数学公式写法。  所有公式均在 **构建阶段渲染**，适用于博客、文档站点与知识库。
 
 
 

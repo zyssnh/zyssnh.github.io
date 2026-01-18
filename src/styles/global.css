@@ -1,167 +1,303 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "katex/dist/katex.min.css";
 
-@reference "tailwindcss";
+@import "tailwindcss";
 
-.prose h1 {
-  @apply text-3xl font-bold;
-}
+/* ================================
+   全局样式：浅色/深色主题
+================================ */
 
-.prose code {
-  @apply bg-gray-100 px-1 rounded;
-}
-
-
-/* 重置样式（消除浏览器默认差异） */
-* {
-  box-sizing: border-box;
-}
-
+/* 根元素样式 */
 html {
-  background-color: #f1f5f9;
-  font-family: "Inter", sans-serif;
-  /* 统一字体 */
+  /* 浅色模式：白色背景 */
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* 全局基础样式（统一样式核心） */
-body {
-  width: 100%;
-  max-width: 80ch;
-  line-height: 1.6;
-  /* 统一行高 */
-  margin: 0 auto;
-  /* 居中内容 */
-  padding: 1rem;
-  /* 全局内边距 */
-  color: #333;
-  /* 统一文本颜色 */
-  /* background-color: #f9f9f9; */
-  /* 统一背景色 */
+/* 浅色模式：白色背景，黑色文字 */
+html.light {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
+html.light body {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* 全局组件样式（如按钮、链接） */
-a {
-  color: #2563eb;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #2563eb;
-  color: white;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #1d4ed8;
-}
-
-/* 导航样式 */
-.menu {
-  background-color: #0d0950;
-  border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 5px 10px;
-}
-
-.nav-links {
-  width: 100%;
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #0d0950;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: #ff9776;
-}
-
-:has(.menu[aria-expanded="true"]) .nav-links {
-  display: unset;
-}
-
-
-@media screen and (min-width: 636px) {
-  .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  .menu {
-    display: none;
-  }
-}
-
+/* 深色模式：紫蓝渐变背景，米色文字 */
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  background-color: #001a4d;
+  color: #fef3c7;
 }
 
 html.dark body {
-  color: #fff;
-  background: #0d0950;
+  background: linear-gradient(135deg, #001f5c 0%, #1a0d4d 50%, #2d0a5c 100%);
+  color: #fef3c7;
 }
 
-.dark .menu {
-  background-color: #fff;
-  color: #000;
+/* ---------- Inline Code ---------- */
+
+.prose code:not(pre code) {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.9em;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
 }
 
-.dark .nav-links a:hover,
-.dark .nav-links a:focus {
-  color: #0d0950;
+html.light .prose code:not(pre code) {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border-color: #e5e7eb;
 }
 
-.dark .nav-links a {
-  color: #fff;
+html.dark .prose code:not(pre code) {
+  background-color: rgba(79, 39, 131, 0.4);
+  color: #fbbf24;
+  border-color: #a855f7;
 }
 
-.dark a {
-  color: #ff9776;
+/* ---------- Code Blocks ---------- */
+
+.prose pre {
+  padding: 1rem;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  border: 1px solid #1e293b;
 }
 
-/* src/styles/global.css */
-/* 
-.prose h1 {
-  @apply text-3xl font-bold;
+html.light .prose pre {
+  background-color: #f8f9fa;
+  color: #1f2937;
+  border-color: #e5e7eb;
 }
 
-.prose code {
-  @apply bg-gray-100 px-1 rounded;
+html.light .prose pre code {
+  color: #1f2937;
+}
+
+html.dark .prose pre {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+html.dark .prose pre code {
+  color: #f1f5f9;
+}
+
+/* 代码块滚动条样式 */
+.prose pre::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.light .prose pre::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 0.25rem;
+}
+
+html.light .prose pre::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+html.dark .prose pre::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 0.25rem;
+}
+
+html.dark .prose pre::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ---------- Footnotes ---------- */
+
+.prose .footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+html.light .prose .footnotes {
+  border-top: 1px solid #d1d5db;
+  color: #4b5563;
+}
+
+html.dark .prose .footnotes {
+  border-top: 1px solid #6b21a8;
+  color: #fef3c7;
+}
+
+.prose .footnotes ol {
+  padding-left: 1.25rem;
+}
+
+.prose .footnotes li {
+  margin-bottom: 0.5rem;
+}
+
+.prose .footnotes a {
+  text-decoration: underline;
+}
+
+/* ---------- Tables ---------- */
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.prose table th,
+.prose table td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.prose table th {
+  font-weight: 600;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.prose table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+html.light .prose table th {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border-color: #d1d5db;
+}
+
+html.light .prose table td {
+  border-color: #d1d5db;
+  color: #000000;
+}
+
+html.light .prose table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+html.dark .prose table th {
+  background-color: #6b21a8;
+  color: #fef3c7;
+  border-color: #a855f7;
+}
+
+html.dark .prose table td {
+  border-color: #a855f7;
+  color: #fef3c7;
+}
+
+html.dark .prose table tr:nth-child(even) {
+  background-color: rgba(79, 39, 131, 0.3);
+}
+
+.prose table code {
+  background: none;
+  padding: 0;
+}
+
+/* ---------- Copy Code Button ---------- */
+
+.code-block-wrapper {
+  position: relative;
 }
 
 .prose pre {
-  @apply bg-gray-900 text-gray-100;
-} */
+  position: relative !important;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(31, 41, 55, 0.8);
+  color: #f1f5f9;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+
+html.light .copy-code-button {
+  background-color: rgba(107, 114, 128, 0.7);
+  color: #ffffff;
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+html.dark .copy-code-button {
+  background-color: rgba(15, 23, 42, 0.8);
+  color: #f1f5f9;
+  border-color: rgba(100, 116, 139, 0.5);
+}
+
+.copy-code-button:hover {
+  background-color: rgba(51, 65, 85, 0.9);
+  border-color: rgba(100, 116, 139, 0.8);
+  transform: translateY(-2px);
+}
+
+html.light .copy-code-button:hover {
+  background-color: rgba(107, 114, 128, 0.85);
+  border-color: rgba(107, 114, 128, 0.8);
+}
+
+html.dark .copy-code-button:hover {
+  background-color: rgba(51, 65, 85, 0.9);
+  border-color: rgba(136, 156, 191, 0.6);
+}
+
+.copy-code-button:active {
+  transform: translateY(0);
+}
+
+.copy-code-button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.copy-code-button.copied {
+  background-color: rgba(34, 197, 94, 0.8);
+  border-color: rgba(34, 197, 94, 0.6);
+}
+
+html.light .copy-code-button.copied {
+  background-color: rgba(34, 197, 94, 0.8);
+  border-color: rgba(34, 197, 94, 0.6);
+}
+
+html.dark .copy-code-button.copied {
+  background-color: rgba(34, 197, 94, 0.8);
+  border-color: rgba(34, 197, 94, 0.6);
+}
+
+.copy-code-button.error {
+  background-color: rgba(239, 68, 68, 0.8);
+  border-color: rgba(239, 68, 68, 0.6);
+}

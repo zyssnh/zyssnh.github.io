@@ -4,17 +4,96 @@ import BlogPost from "../components/BlogPost.astro";
 
 const allPosts = Object.values(
     import.meta.glob("./posts/*.md", { eager: true }),
-);
+).sort((a: any, b: any) => {
+    const dateA = new Date(a.frontmatter.pubDate).getTime();
+    const dateB = new Date(b.frontmatter.pubDate).getTime();
+    return dateB - dateA;
+});
 ---
 
 <BaseLayout pageTitle="博客">
-    <h1>我的 Astro 学习博客</h1>
-    <p>在这里，我将分享我的 Astro 学习之旅。</p>
-    <ul>
+    <div class="blog-header">
+        <h1>我的 Astro 学习博客</h1>
+        <p>在这里，我将分享我的 Astro 学习之旅。</p>
+    </div>
+    
+    <div class="blog-grid">
         {
             allPosts.map((post: any) => (
-                <BlogPost url={post.url} title={post.frontmatter.title} />
+                <BlogPost 
+                    url={post.url} 
+                    title={post.frontmatter.title}
+                    description={post.frontmatter.description}
+                    author={post.frontmatter.author}
+                    pubDate={post.frontmatter.pubDate}
+                    image={post.frontmatter.image}
+                    tags={post.frontmatter.tags}
+                />
             ))
         }
-    </ul>
+    </div>
 </BaseLayout>
+
+<style>
+    .blog-header {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid;
+    }
+
+    :global(html.light) .blog-header {
+        border-color: #e5e7eb;
+    }
+
+    :global(html.dark) .blog-header {
+        border-color: #a855f7;
+    }
+
+    .blog-header h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    :global(html.light) .blog-header h1 {
+        color: #1f2937;
+    }
+
+    :global(html.dark) .blog-header h1 {
+        color: #fef3c7;
+    }
+
+    .blog-header p {
+        margin: 0;
+        font-size: 1.125rem;
+    }
+
+    :global(html.light) .blog-header p {
+        color: #6b7280;
+    }
+
+    :global(html.dark) .blog-header p {
+        color: #d1d5db;
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .blog-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .blog-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+

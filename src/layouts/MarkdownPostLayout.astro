@@ -1,94 +1,74 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-
-interface Props {
-    frontmatter: {
-        title: string;
-        description?: string;
-        pubDate?: Date;
-        author?: string;
-        image?: {
-            url: string;
-            alt: string;
-        };
-        tags?: string[];
-    };
-}
+import ArticleHeader from "../components/ArticleHeader.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <!-- 文章元信息 -->
-    <header class="mb-8">
-        {
-            frontmatter.pubDate && (
-                <p class="text-sm text-gray-500">
-                    {frontmatter.pubDate.toString().slice(0, 10)}
-                </p>
-            )
-        }
+    <!-- 文章头部信息 -->
+    <ArticleHeader 
+        title={frontmatter.title}
+        description={frontmatter.description}
+        author={frontmatter.author}
+        pubDate={frontmatter.pubDate}
+        tags={frontmatter.tags}
+        image={frontmatter.image}
+    />
 
-        {
-            frontmatter.description && (
-                <p class="mt-2 text-lg text-gray-600">
-                    <em>{frontmatter.description}</em>
-                </p>
-            )
-        }
+    <div class="flex gap-8">
+        <!-- 主内容 -->
+        <article class="prose prose-slate dark:prose-invert max-w-none flex-1">
+            <slot />
+        </article>
 
-        {
-            frontmatter.author && (
-                <p class="mt-1 text-sm">作者：{frontmatter.author}</p>
-            )
-        }
+        <!-- 右侧目录 -->
+        <aside class="hidden lg:block w-64 shrink-0">
+            <div class="sticky top-24">
+                <h2 class="text-sm font-semibold mb-3 light:text-black dark:text-amber-50">目录</h2>
+                <nav id="toc" class="space-y-1 text-sm light:text-black dark:text-amber-100"></nav>
+            </div>
+        </aside>
+    </div>
 
-        {
-            frontmatter.image && (
-                <img
-                    class="my-6 rounded"
-                    src={frontmatter.image.url}
-                    width="300"
-                    alt={frontmatter.image.alt}
-                />
-            )
-        }
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toc = document.getElementById("toc");
+            if (!toc) return;
 
-        {
-            frontmatter.tags && (
-                <div class="tags mt-4">
-                    {frontmatter.tags.map((tag: string) => (
-                        <p class="tag">
-                            <a href={`/tags/${tag}`}>{tag}</a>
-                        </p>
-                    ))}
-                </div>
-            )
-        }
-    </header>
+            // 获取所有标题（h1-h6）
+            const headings = document.querySelectorAll(
+                "article h1, article h2, article h3, article h4, article h5, article h6",
+            );
 
-    <!-- Markdown 内容排版 -->
-    <article class="prose prose-slate max-w-none">
-        <slot />
-    </article>
+            if (headings.length === 0) return;
+
+            // 找到最小的标题级别
+            const levels = Array.from(headings).map(h => parseInt(h.tagName.charAt(1)));
+            const minLevel = Math.min(...levels);
+
+            // 创建目录列表
+            let currentLevel = minLevel;
+            let currentList = toc;
+
+            headings.forEach((h, index) => {
+                const level = parseInt(h.tagName.charAt(1));
+                const id = `heading-${index}`;
+                h.id = id;
+
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = `#${id}`;
+                a.textContent = h.textContent;
+                a.className = `block hover:underline light:hover:text-gray-600 dark:hover:text-amber-200 transition-colors ${
+                    level === minLevel ? "font-medium" : level === minLevel + 1 ? "ml-4 text-slate-600 dark:text-amber-100" : "ml-8 text-slate-500 dark:text-amber-100"
+                }`;
+                li.appendChild(a);
+                li.style.listStyle = "none";
+
+                currentList.appendChild(li);
+                currentLevel = level;
+            });
+        });
+    </script>
 </BaseLayout>
-
-<style>
-    a {
-        color: #00539f;
-    }
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .tag {
-        margin: 0.25em;
-        border: dotted 1px #a1a1a1;
-        border-radius: 0.5em;
-        padding: 0.5em 1em;
-        font-size: 1.15em;
-        background-color: #f8fcfd;
-    }
-</style>

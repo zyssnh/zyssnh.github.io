@@ -2,47 +2,37 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+
 const { pageTitle } = Astro.props;
-
-const skillColor = "crimson";
-const fontWeight = "bold";
-const textCase = "uppercase";
-
 ---
 
-<html lang="zh-CN">
+<html lang="zh-CN" class="light">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
+        <link rel="icon" href="/favicon.svg" />
         <title>{pageTitle}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-vZTG03O8rw+gXk7mKX5JjTMV5Yjv0p4b9p6kGk0V1f+6U5mI5DkLtS3qm9EkfZB+E" crossorigin="anonymous"> -->
     </head>
-    <body>
-        <Header />
-        <h1>{pageTitle}</h1>
 
-        <slot />
+    <body
+        class="min-h-screen text-slate-900 dark:text-amber-50 light:bg-white light:text-black"
+    >
+        <Header />
+
+        <main class="max-w-7xl mx-auto px-4 py-6">
+            <slot />
+        </main>
 
         <Footer />
-        <script>
-            import "../scripts/menu.js";
-        </script>
 
-        <style define:vars={{ skillColor, fontWeight, textCase }}>
-            h1 {
-                color: purple;
-                font-size: 4rem;
-            }
+        <!-- 加载菜单脚本 -->
+        <script src="../scripts/menu.js"></script>
 
-            :global(.skill) {
-                color: var(--skillColor);
-                font-weight: var(--fontWeight);
-                text-transform: var(--textCase);
-            }
-        </style>
+        <!-- 加载主题管理脚本 -->
+        <script src="../scripts/theme.js"></script>
+
+        <!-- 代码块复制功能 -->
+        <script src="../scripts/copyCode.js"></script>
     </body>
 </html>
-

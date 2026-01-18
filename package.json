@@ -14,8 +14,12 @@
     "astro": "^5.16.9",
     "katex": "^0.16.27",
     "preact": "^10.28.2",
+    "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.1",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
+    "remark-toc": "^9.0.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
